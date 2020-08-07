@@ -39,13 +39,14 @@ func Lock() {
 	recordProcessId(curpid)
 
 	sigs := make(chan os.Signal, 1)
-	signal.Notify(sigs, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+	signal.Notify(sigs,syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
 	go func() {
-		<-sigs
+		//sig := <-sigs
 		//fmt.Println(sig)
+		<-sigs
 		//删除进程id记录文件
 		removeFile()
-		os.Exit(1)
+		os.Exit(0)
 	}()
 }
 
@@ -83,4 +84,8 @@ func recordProcessId(pid int) {
  */
 func removeFile() {
 	os.Remove(p_file)
+}
+
+func UnLock()  {
+	removeFile()
 }

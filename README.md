@@ -3,6 +3,7 @@
 
 
 调用方式 
-```go
+```golang
 plock.Lock()
+defer plock.UnLock()
 ```

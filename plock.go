@@ -15,7 +15,7 @@ const (
 	no_record = -1
 )
 
-func Start() {
+func Lock() {
 	pid := getProcessIdInRecord()
 	if pid != no_record {
 		sysType := runtime.GOOS

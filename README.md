@@ -4,5 +4,5 @@
 
 调用方式 
 ```go
-plock.Start()
+plock.Lock()
 ```
